@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HelloJS</title>
+	<style type="text/css">
+		#sq {
+			width: 80px;
+			height: 80px;
+			background-color: #f00;
+			position: relative;
+			margin-left: 50px;
+		}
+		#time {
+			color: blue;
+			font-size: 20px;
+			font-weight: bold;
+
+		}
+		body{
+			background-color: #20BDFF;
+		}
+		.container{
+			background-color: #fff;
+			height: 800px;
+			overflow: auto;
+			margin: 50px 50px 50px 50px;
+			border-radius: 10%;
+			opacity: 80%;
+
+		}
+		#brand {
+			color: #000;
+			text-align: center;
+			margin-top: 50px;
+			font-size: 40px;
+			font-weight: bolder;
+		}
+		#side {
+			color: #373B44;
+		}
+		p {
+			text-align: center;
+			font-weight: bold;
+		}
+		#res {
+			text-align: center;
+			padding: 5px;
+		}
+		#total {
+			background-color: gray;
+			border-radius: 5px;
+		}
+		
+
+		
+	</style>
+
+</head>
+<body>
+	<div id="ct" class="container">
+		<h1 id="brand">Reaction <span id="side">Teaser</span></h1>
+		<p >Click on the shape as fast as you can.</p>
+		<p>You took <span id="time"></span> secs</p>
+		<div id="res">
+			<h3><span id="total"></span></h3>
+		</div>
+		<div id="area">
+			<p id="sq"></p>
+		</div>
+	</div>
+
+
+
+	<script type="text/javascript">
+		var result = 0;
+		var i = 0;
+		var starTime = new Date().getTime();
+
+				document.getElementById('sq').onclick = function() {
+					i=i+1;
+					document.getElementById('sq').style.display = "none";
+			
+					var endTime = new Date().getTime();
+					var timetaken = (endTime - starTime)/1000;
+					document.getElementById('time').innerHTML = timetaken;
+					myfunc();
+					starTime = new Date().getTime();
+					result = result + timetaken;
+					if(i==9){
+						document.getElementById('total').innerHTML = "Your Score : " + result;
+						document.getElementById('sq').style.display = "none";
+						document.getElementById('ct').style.width = "500px";
+						document.getElementById('ct').style.height = "400px";
+
+
+					}
+				
+				}
+				
+			
+		
+
+
+		function myfunc(){
+			var topvalue = Math.random()*500;
+			var leftvalue = Math.random()*500;
+			var r = Math.random()*100;
+			var g = Math.random()*50;
+			var b = Math.random()*200;
+			if(Math.random() > 0.5){
+				document.getElementById('sq').style.borderRadius = "50%";
+			}
+			else{
+				document.getElementById('sq').style.borderRadius = "0%";
+			}
+
+			document.getElementById('sq').style.top = topvalue+"px";
+			document.getElementById('sq').style.left = leftvalue+"px";
+			document.getElementById('sq').style.display = "block";
+			document.getElementById('sq').style.backgroundColor = "rgb("+r+","+g+","+b+")";
+			
+		}
+
+		
+   </script>
+
+   
+
+</body>
+</html>
